@@ -1,0 +1,91 @@
+{
+    "title": "AWS S3 Control",
+    "description": " AWS S3 Control provides access to Amazon S3 control plane operations. ",
+    "docsUrl": "https://docs.aws.amazon.com/s3-control/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/s3control/2018-08-20/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://s3-control.amazonaws.com/",
+                    "http://s3-control.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "DeletePublicAccessBlock": {
+            "main": "./lib/actions/DeletePublicAccessBlock.js",
+            "title": "Removes the Public Access Block configuration for an Amazon Web Services account.",
+            "description": "Removes the Public Access Block configuration for an Amazon Web Services account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeletePublicAccessBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPublicAccessBlock": {
+            "main": "./lib/actions/GetPublicAccessBlock.js",
+            "title": "Retrieves the Public Access Block configuration for an Amazon Web Services account.",
+            "description": "Retrieves the Public Access Block configuration for an Amazon Web Services account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPublicAccessBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PutPublicAccessBlock": {
+            "main": "./lib/actions/PutPublicAccessBlock.js",
+            "title": "Creates or modifies the Public Access Block configuration for an Amazon Web Services account.",
+            "description": "Creates or modifies the Public Access Block configuration for an Amazon Web Services account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PutPublicAccessBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
